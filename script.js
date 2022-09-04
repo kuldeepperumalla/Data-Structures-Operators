@@ -36,6 +36,11 @@ const restaurant = {
             `Order recieved! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
         );
     },
+
+    orderPasta: function( ing1, ing2, ing3, ){
+        console.log(`Here is yoyur delicious pasta with ${ing1}, ${ing2}, and ${ing3}, `);
+    },
+    
 };
 
 //Spread Operator
@@ -45,6 +50,36 @@ const badNewArray = [1, 2, arr[0], arr[1], arr[2]];
 const goodNewArray = [1, 2, ...arr];
 console.log(`array without spread operator -> ${badNewArray}`);
 console.log(`array with spread operator -> ${goodNewArray}`);
+console.log(...goodNewArray);
+
+const newMenu = [...restaurant.mainMenu, 'Gnocci']
+console.log(newMenu);
+const mainMenucopy = [restaurant.mainMenu];
+console.log(mainMenucopy);
+const menu = [...restaurant.mainMenu, restaurant.starterMenu]
+console.log(menu);
+//Iterables are arrays, strings, maps, sets. Not objects
+const num = '1234567';
+const individual_numbers = [...num,"",8]
+console.log(individual_numbers);
+// console.log(`${...num},multiple values seperated does not work here `);
+
+//realworld example
+// const ingredients = [
+//   prompt("Let's make pasta! Ingredien1"),
+//   prompt("Let's make pasta! Ingredien2"),
+//   prompt("Let's make pasta! Ingredien3"),
+// ];
+// console.log(ingredients);
+// retaurant.orderPasta(...ingredients);
+
+//objects
+const newRestaurants = { foundedIn: 1998, ...restaurant, founder: 'Guiseepe'}
+console.log(newRestaurants);
+const restaurantCopy = {...restaurant};
+restaurantCopy.name = 'ritorante Roma';
+console.log(restaurantCopy.name);
+console.log(restaurant.name);
 
 
 /*
