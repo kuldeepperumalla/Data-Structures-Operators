@@ -38,6 +38,17 @@ const restaurant = {
     },
 };
 
+//Spread Operator
+const arr = [7, 8, 9];
+const badNewArray = [1, 2, arr[0], arr[1], arr[2]];
+
+const goodNewArray = [1, 2, ...arr];
+console.log(`array without spread operator -> ${badNewArray}`);
+console.log(`array with spread operator -> ${goodNewArray}`);
+
+
+/*
+//Destructuring objects
 restaurant.orderDelivery({
     time: "22:30",
     address: 'Vie del Sole, 21',
@@ -71,6 +82,7 @@ const {
     fri: { open: o, close: c }
 } = openingHours;
 console.log(o, c);
+*/
 
 /*
 const arr = [2, 3, 4];
