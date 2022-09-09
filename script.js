@@ -37,11 +37,92 @@ const restaurant = {
         );
     },
 
-    orderPasta: function( ing1, ing2, ing3, ){
+    orderPasta: function( ing1, ing2, ing3){
         console.log(`Here is yoyur delicious pasta with ${ing1}, ${ing2}, and ${ing3}, `);
     },
     
+    orderPizza: function(firstIng, ...restIng){
+        console.log(firstIng);
+        console.log(restIng);
+    }
 };
+
+const rest1 =  {
+    name: 'Capri',
+    numGuests: 20
+}  
+
+const rest2 = {
+    name: 'La Piazza',
+    owner: 'Giovanni Rossi'
+};
+
+console.log(rest2.numGuests ??= undefined);
+console.log(rest2);
+/*
+// Destructuring arrays
+
+// Spread pattern because it is on the right hand side
+const arr = [1,2, ...[3,4,5]]
+// REST pattern  because it is on the left side of the assignment
+const [a,b, ...others] = [1,2,3,4,5];
+console.log(a,b,others);
+// another example of REST pattern 
+const [pizza, ,risotto, ...otherFood] = [...restaurant.mainMenu, ...restaurant.starterMenu]
+console.log(pizza, risotto, otherFood);
+
+// Destructuring Objects
+
+const {sat, ...weekdays} = restaurant.openingHours;
+console.log(weekdays);
+
+// using spread in Functions
+const add = function(...numbers){
+    let summ = 0;
+    for(let i = 0; i<numbers.length; i++){
+        summ += numbers[i]
+    }
+    console.log(summ);
+}
+
+add(2,3);
+add(5,3,7,2);
+add(8,2,5,3,2,1,4);
+
+const x = [22,23,24];
+add(...x);
+
+restaurant.orderPizza('mushrooms', 'onion', 'olives', 'spinach');
+restaurant.orderPizza('musroom');
+
+// Sortcircuting for OR operator ||
+console.log('K' || 2);
+console.log('' || 'K');
+console.log(true || 0);
+console.log(undefined || null);
+console.log(undefined || 0 || false || 'G' || 23 || null);
+console.log('2' || true);
+
+restaurant.numGuests = 23;
+// Nullish coalescing
+const guest1 = restaurant.numGuests ?? 10;
+
+const guest2 = restaurant.numGuests || 12;
+console.log(guest1); 
+
+AND operator
+
+console.log(0 && 'k');
+console.log('hello' && 34 && null);
+
+if(restaurant.orderPizza){
+    restaurant.orderPizza("mushrooms", "onion", "olives", "spinach");
+}
+
+restaurant.orderPizza && restaurant.orderPizza("mushrooms", "onion", "olives", "spinach");
+*/
+
+/*
 
 //Spread Operator
 const arr = [7, 8, 9];
@@ -80,6 +161,7 @@ const restaurantCopy = {...restaurant};
 restaurantCopy.name = 'ritorante Roma';
 console.log(restaurantCopy.name);
 console.log(restaurant.name);
+*/
 
 
 /*
