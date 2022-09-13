@@ -114,8 +114,12 @@ const game = {
     },
 };
 
-const plyaerArray = game.players
-console.log(...plyaerArray);
+//#1
+
+const player1 = game.players[0];
+const player2 = game.players[1]
+console.log(player1);
+console.log(player2);
 
 // Logical OR assignment operator
 // rest1.numGuests = rest1.numGuests || 10;
