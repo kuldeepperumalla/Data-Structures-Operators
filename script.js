@@ -116,10 +116,13 @@ const game = {
 
 //#1
 
-const player1 = game.players[0];
-const player2 = game.players[1]
-console.log(player1);
-console.log(player2);
+const [players1, players2] = game.players;
+console.log(players1, players2);
+
+const [gk, ...fieldPlayers] = players1;
+console.log(gk, fieldPlayers);
+
+const allPlayers = [...players1, ...players2]
 
 // Logical OR assignment operator
 // rest1.numGuests = rest1.numGuests || 10;
