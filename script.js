@@ -137,7 +137,6 @@ for (const day of properties) {
     openStr += `${day}`;
 }
 console.log(openStr);
-
 // Property Values
 const values = Object.values(openingHours);
 console.log(values);
