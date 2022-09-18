@@ -126,6 +126,12 @@ for(const [key, {team1, x, team2}] of entries){
     console.log(`odds of ${key}`);
 }
 
+// 3.
+for (const [team, odd] of Object.entries(game.odds)) {
+  const teamStr = team === 'x' ? 'draw' : `victory ${game[team]}`;
+  console.log(`Odd of ${teamStr} ${odd}`);
+}
+
 /**
  * 
 const properties = Object.keys(openingHours);
