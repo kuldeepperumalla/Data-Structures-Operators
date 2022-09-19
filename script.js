@@ -132,6 +132,8 @@ for (const [team, odd] of Object.entries(game.odds)) {
   console.log(`Odd of ${teamStr} ${odd}`);
 }
 
+console.log(team)
+
 /**
  * 
 const properties = Object.keys(openingHours);
