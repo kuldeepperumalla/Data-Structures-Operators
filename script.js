@@ -134,7 +134,7 @@ for (const [team, odd] of Object.entries(game.odds)) {
 
 //4 bonus
 
-Const sockers = {};
+const sockers = {};
 
 console.log(team)
 
