@@ -132,6 +132,10 @@ for (const [team, odd] of Object.entries(game.odds)) {
   console.log(`Odd of ${teamStr} ${odd}`);
 }
 
+//4 bonus
+
+Const sockers = {};
+
 console.log(team)
 
 /**
