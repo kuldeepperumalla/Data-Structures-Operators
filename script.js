@@ -59,6 +59,34 @@ const rest2 = {
     owner: 'Giovanni Rossi'
 };
 
+const orderSet = new Set([
+    'pasta',
+    'pizza',
+    'pizza',
+    'risotto',
+    'pasta',
+    'pizza',
+])
+console.log(new Set ("kuldeepppp").has('k'));
+console.log(orderSet.has('pizza'));
+console.log(orderSet.has('bread'));
+orderSet.add('Garlic Bread');
+orderSet.delete('risotto');
+// orderSet.clear()
+console.log(orderSet);
+
+for(const order of orderSet){
+console.log(order);
+}
+
+// Example
+const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
+const staffUnique = [...new Set(staff)];
+console.log(staffUnique);
+console.log(
+  new Set(['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter']).size
+);
+console.log(new Set('jonasschmedtmann').size);
 /* 
 Challenge 2
 Let's continue with our football betting app!
@@ -77,6 +105,8 @@ BONUS: Create an object called 'scorers' which contains the names of the players
       }
 GOOD LUCK 😀
 */
+
+/**
 const game = {
   team1: "Bayern Munosh",
   team2: "Borrussia Dortmund",
@@ -143,7 +173,7 @@ for(const [team, odds] of Object.entries(game.odds)){
 const scorers = {};
 for(const el of game.scored) scorers[el]? scorers[el]++ : scorers[el]=1;
 console.table(scorers);
-
+ */
 
 /**
  * 
