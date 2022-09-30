@@ -1,6 +1,6 @@
 'use strict'
 
-const bookings = []
+/* const bookings = []
 
 const createBookings = function(flightNum, numPassengers = 1, price = 199 * numPassengers){
     // ES5
@@ -47,4 +47,4 @@ const newPassport = function (person) {
   person.passport = Math.trunc(Math.random() * 100000000000);
 };
 newPassport(jonas);
-checkIn(flight, jonas);
+checkIn(flight, jonas); */
