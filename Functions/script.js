@@ -49,7 +49,7 @@ const newPassport = function (person) {
 newPassport(jonas);
 checkIn(flight, jonas); */
 
-// call back functions
+/* // call back functions
 const oneWord = function(str){
     return str.replace(/ /g, '').toLowerCase();
 }
@@ -74,4 +74,40 @@ const high5 =  function() {
 }
 document.body.addEventListener('click', high5);
 
-['a','b','c'].forEach(high5)
+['a','b','c'].forEach(high5) */
+/* 
+const greet = function (greeting){
+  return function (name) {
+    console.log(`${greeting} ${name}`)
+  }
+}
+
+const greetingHey = greet('Hey');
+greetingHey('kuldeep');
+greetingHey('perumalla');
+greet('Hello')('Jonas');
+
+//Challenge
+const greetArr = greeting => name => console.log(`${grerting} ${name}`);
+
+greetArr('Hi')('kuldeep') */
+
+const lufthansa = {
+  airline: "Lufthansa",
+  iataCode: "LH",
+  bookings: [],
+  book(flightNum, name) {
+    console.log(`${name} Booked a seat on ${this.airline} flight ${this.iataCode}  ${flightNum}`);
+    this.bookings.push({flight: `${this.iataCode}${flightNum}`, name})
+  },
+};
+
+lufthansa.book(239, 'Kuldeep Perumalla');
+lufthansa.book(293, 'kp');
+console.log(lufthansa);
+
+const eurowings = {
+  name: 'Eurowings',
+  iataCode: 'EW',
+  bookings: [],
+};
