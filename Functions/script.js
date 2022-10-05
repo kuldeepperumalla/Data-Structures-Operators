@@ -113,3 +113,4 @@ const eurowings = {
 };
 
 const book = lufthansa.book;
+Console.log(book);
