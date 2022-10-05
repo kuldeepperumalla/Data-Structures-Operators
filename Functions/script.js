@@ -102,15 +102,36 @@ const lufthansa = {
   },
 };
 
-lufthansa.book(239, 'Kuldeep Perumalla');
-lufthansa.book(293, 'kp');
-console.log(lufthansa);
+// lufthansa.book(239, 'Kuldeep Perumalla');
+// lufthansa.book(293, 'kp');
+// console.log(lufthansa);
 
 const eurowings = {
-  name: 'Eurowings',
+  airline: 'Eurowings',
   iataCode: 'EW',
   bookings: [],
 };
 
+const swiss = {
+  airline: 'Swiss Air Lines',
+  iataCode: 'LX',
+  bookings: [],
+};
+
 const book = lufthansa.book;
-Console.log(book);
+// Does not work
+// book(12, 'k');
+
+book.call(eurowings, 23, 'Sarah Williams')
+console.log(eurowings);
+book.call(lufthansa, 23, 'toarah Williams')
+console.log(lufthansa);
+book.call(swiss, 23, 'Boarah Williams')
+console.log(swiss);
+
+// Apply method
+const flightData = [234, 'George Cooper'];
+book.apply(swiss, flightData)
+console.log(swiss);
+
+book.call(swiss, ...flightData)
