@@ -92,7 +92,7 @@ const greetArr = greeting => name => console.log(`${grerting} ${name}`);
 
 greetArr('Hi')('kuldeep') */
 
-const lufthansa = {
+/* const lufthansa = {
   airline: "Lufthansa",
   iataCode: "LH",
   bookings: [],
@@ -171,4 +171,6 @@ const addTax = function(rate){
 
 const addVat2 = addTax(0.13);
 console.log(addVat2(1212));
-console.log(addVat2(100));
+console.log(addVat2(100)); */
+
+// Challenge
