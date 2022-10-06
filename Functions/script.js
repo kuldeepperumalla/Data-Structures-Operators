@@ -133,5 +133,42 @@ console.log(swiss);
 const flightData = [234, 'George Cooper'];
 book.apply(swiss, flightData)
 console.log(swiss);
-
+// ES6 call method
 book.call(swiss, ...flightData)
+
+
+// Bind method
+// book.call
+const bookEW = book.bind(eurowings);
+const bookLH = book.bind(lufthansa);
+const bookLX = book.bind(swiss);
+
+const bookEW23 = book.bind(eurowings, 23);
+ bookEW23('kp')
+ bookEW23('ll')
+
+//  with event listeners
+lufthansa.planes = 300;
+lufthansa.buyPlane = function(){
+  console.log(this);
+  this.planes++;
+  console.log(this.planes);
+}
+
+document.querySelector('.buy').addEventListener('click', lufthansa.buyPlane.bind(lufthansa))
+console.log(lufthansa);
+
+const AfteraddTAX = (rate, value) =>  value-((value+value*rate)-value);
+const addVAT = AfteraddTAX.bind(null, 0.13);
+console.log(addVAT(1212));
+
+// Without using Bind Method
+const addTax = function(rate){
+  return function(value){
+    return value+value*rate;
+  };
+};
+
+const addVat2 = addTax(0.13);
+console.log(addVat2(1212));
+console.log(addVat2(100));
