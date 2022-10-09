@@ -225,7 +225,7 @@ document.querySelector('.poll').addEventListener('click',poll.registerNewAnswer.
 
 poll.displayResults.call({answers: [5,2,3]}, 'string') */
 
-// Normal Function
+/* // Normal Function
 const runOnce = function(){
   console.log("this is a normal function");
 }
@@ -236,4 +236,50 @@ runOnce();
 })();
 // IIFE arrow function
  (() => console.log("this is IIF arrow function"))();
-//  IIFs are not global scoped. any variable decalred inside of the function cannot be accessed out side of the funciton
+//  IIFs are not global scoped. any variable decalred inside of the function cannot be accessed out side of the funciton */
+
+// closures
+
+const secureBooking = function () {
+  let passengerCount = 0;
+
+  return function()
+{
+  passengerCount++;
+  console.log(`${passengerCount} passengeers`);
+}};
+const booker = secureBooking();
+booker();
+booker();
+booker();
+console.dir(booker);
+
+let f;
+ const g = function(){
+  const a = 23;
+  f = () => console.log(a*2);
+ }
+
+ const h = function(){
+  const b = 777;
+  f = () => console.log(b*2);
+ }
+
+ g();
+ f();
+//  Re-assigned
+h()
+f();
+console.dir(f);
+
+const boardPassengers = function(n, wait){
+  const perGroup = n/3;
+
+  setTimeout(function () {
+    console.log(`We are now Boarding all ${n} Passengers`);
+    console.log(`There are 3 groups, wach with ${perGroup} passengers`);
+  }, wait*1000);
+  console.log(`Will start boarding in ${wait} seconds`);
+};
+
+boardPassengers(180,3)
