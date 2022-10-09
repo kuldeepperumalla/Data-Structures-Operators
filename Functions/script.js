@@ -1,6 +1,5 @@
-'use strict'
-
-/* const bookings = []
+'use strict';
+  /* const bookings = []
 
 const createBookings = function(flightNum, numPassengers = 1, price = 199 * numPassengers){
     // ES5
@@ -49,7 +48,7 @@ const newPassport = function (person) {
 newPassport(jonas);
 checkIn(flight, jonas); */
 
-/* // call back functions
+  /* // call back functions
 const oneWord = function(str){
     return str.replace(/ /g, '').toLowerCase();
 }
@@ -75,7 +74,7 @@ const high5 =  function() {
 document.body.addEventListener('click', high5);
 
 ['a','b','c'].forEach(high5) */
-/* 
+  /* 
 const greet = function (greeting){
   return function (name) {
     console.log(`${greeting} ${name}`)
@@ -92,7 +91,7 @@ const greetArr = greeting => name => console.log(`${grerting} ${name}`);
 
 greetArr('Hi')('kuldeep') */
 
-/* const lufthansa = {
+  /* const lufthansa = {
   airline: "Lufthansa",
   iataCode: "LH",
   bookings: [],
@@ -173,8 +172,8 @@ const addVat2 = addTax(0.13);
 console.log(addVat2(1212));
 console.log(addVat2(100)); */
 
-// Challenge
-/* 
+  // Challenge
+  /* 
 Let's build a simple poll app!
 A poll has a question, an array of options from which people can choose, and an array with the number of replies for each option. This data is stored in the starter object below.
 Here are your tasks:
@@ -198,7 +197,7 @@ BONUS TEST DATA 2: [1, 5, 3, 9, 6, 1]
 GOOD LUCK 😀
 */
 
-/* const poll = {
+  /* const poll = {
   question: "what is your favourite programming language?",
   options: ["0: JavaScript", "1: Python", "2: Rust", "3: C++"],
   answers: new Array(4).fill(0),
@@ -225,7 +224,7 @@ document.querySelector('.poll').addEventListener('click',poll.registerNewAnswer.
 
 poll.displayResults.call({answers: [5,2,3]}, 'string') */
 
-/* // Normal Function
+  /* // Normal Function
 const runOnce = function(){
   console.log("this is a normal function");
 }
@@ -238,9 +237,9 @@ runOnce();
  (() => console.log("this is IIF arrow function"))();
 //  IIFs are not global scoped. any variable decalred inside of the function cannot be accessed out side of the funciton */
 
-// closures
+  // closures
 
-const secureBooking = function () {
+  /* const secureBooking = function () {
   let passengerCount = 0;
 
   return function()
@@ -282,4 +281,20 @@ const boardPassengers = function(n, wait){
   console.log(`Will start boarding in ${wait} seconds`);
 };
 
-boardPassengers(180,3)
+boardPassengers(180,3) */
+
+  // Challenge 2
+  /* 
+This is more of a thinking challenge than a coding challenge 🤓
+Take the IIFE below and at the end of the function, attach an event listener that changes the color of the selected h1 element ('header') to blue, each time the BODY element is clicked. Do NOT select the h1 element again!
+And now explain to YOURSELF (or someone around you) WHY this worked! Take all the time you need. Think about WHEN exactly the callback function is executed, and what that means for the variables involved in this example.
+GOOD LUCK 😀
+*/
+  (function () {
+    const header = document.querySelector("h1");
+    header.style.color = "red";
+    document.querySelector("body").addEventListener("click", function () {
+      header.style.color = "blue";
+    });
+  }
+)();
