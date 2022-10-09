@@ -198,7 +198,7 @@ BONUS TEST DATA 2: [1, 5, 3, 9, 6, 1]
 GOOD LUCK 😀
 */
 
-const poll = {
+/* const poll = {
   question: "what is your favourite programming language?",
   options: ["0: JavaScript", "1: Python", "2: Rust", "3: C++"],
   answers: new Array(4).fill(0),
@@ -223,4 +223,17 @@ const poll = {
 // DOM
 document.querySelector('.poll').addEventListener('click',poll.registerNewAnswer.bind(poll));
 
-poll.displayResults.call({answers: [5,2,3]}, 'string')
+poll.displayResults.call({answers: [5,2,3]}, 'string') */
+
+// Normal Function
+const runOnce = function(){
+  console.log("this is a normal function");
+}
+runOnce();
+// Immediate Invoked function expresstion -> IIFE
+(function (){ 
+  console.log("This is Immediately Invoked Function");
+})();
+// IIFE arrow function
+ (() => console.log("this is IIF arrow function"))();
+//  IIFs are not global scoped. any variable decalred inside of the function cannot be accessed out side of the funciton
