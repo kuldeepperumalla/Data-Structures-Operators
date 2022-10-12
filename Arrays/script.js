@@ -80,13 +80,18 @@ const displayMovement = function(movement){
      containerMovements.insertAdjacentHTML("afterbegin", html);
   })
 };
-displayMovement(account1.movements);
+const createUserNames = function (accounts) {
+  accounts.forEach(function (value) {
+    value.username = value.owner
+      .toLowerCase()
+      .split(" ")
+      .map((e) => e[0])
+      .join("");
+  });
+};
+createUserNames(accounts);
 
-const createUserNames = function(user){
-const username = user.toLowerCase().split(' ').map(e=>e[0]).join('');
-return username;
-} 
-console.log(createUserNames('Kuldeep Perumalla'));
+console.log(accounts);
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -214,4 +219,13 @@ const movementsDescriptions = movements.map(
   (mov, i, arr) =>
   `n Movement ${i+1}: You ${mov > 0 ? 'deposited' : 'Withdrew'} ${mov}`
 )
-console.log(movementsDescriptions);
+// console.log(movementsDescriptions);
+const deposits = movements.filter(function(e){
+  return e>0;
+})
+// console.log(deposits);
+const desposites = [];
+const withdrawals = []
+for(const e of movements)e > 0 ? desposites.push(e) : withdrawals.push(e);
+
+console.log(`desposites: ${desposites}\nwithdrawals: ${withdrawals}`);
