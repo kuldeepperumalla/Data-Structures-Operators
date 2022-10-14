@@ -102,18 +102,6 @@ createUserNames(accounts);
 calcDisplayBalance(account1.movements);
 // console.log(accounts);
 
-const createUserNames = function (accounts) {
-  accounts.forEach(function (value) {
-    value.username = value.owner
-      .toLowerCase()
-      .split(" ")
-      .map((e) => e[0])
-      .join("");
-  });
-};
-createUserNames(accounts);
-
-console.log(accounts);
 
 
 /////////////////////////////////////////////////
@@ -243,7 +231,7 @@ const movementsDescriptions = movements.map(
   `n Movement ${i+1}: You ${mov > 0 ? 'deposited' : 'Withdrew'} ${mov}`
 )
 // console.log(movementsDescriptions);
-
+console.log(`desposites: ${desposites}\nwithdrawals: ${withdrawals}`);
 // console.log(`desposites: ${desposites}\nwithdrawals: ${withdrawals}`);
 // The reduce Method
 // console.log(movements);
@@ -296,5 +284,4 @@ const calcAverageHumanAge = function (ages) {
 const avg = calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
 const avg2 = calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]);
 console.log(avg, avg2);
-console.log(`desposites: ${desposites}\nwithdrawals: ${withdrawals}`);
 
