@@ -81,6 +81,7 @@ const displayMovement = function(movement){
   })
 };
 
+
 displayMovement(account1.movements)
 
 const calcDisplayBalance = function(movemants){
@@ -100,6 +101,20 @@ const createUserNames = function (accounts) {
 createUserNames(accounts);
 calcDisplayBalance(account1.movements);
 // console.log(accounts);
+
+const createUserNames = function (accounts) {
+  accounts.forEach(function (value) {
+    value.username = value.owner
+      .toLowerCase()
+      .split(" ")
+      .map((e) => e[0])
+      .join("");
+  });
+};
+createUserNames(accounts);
+
+console.log(accounts);
+
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -228,14 +243,6 @@ const movementsDescriptions = movements.map(
   `n Movement ${i+1}: You ${mov > 0 ? 'deposited' : 'Withdrew'} ${mov}`
 )
 // console.log(movementsDescriptions);
-// Filter
-const deposits = movements.filter(function(e){
-  return e>0;
-})
-// console.log(deposits);
-const desposites = [];
-const withdrawals = []
-for(const e of movements)e > 0 ? desposites.push(e) : withdrawals.push(e);
 
 // console.log(`desposites: ${desposites}\nwithdrawals: ${withdrawals}`);
 // The reduce Method
@@ -289,3 +296,5 @@ const calcAverageHumanAge = function (ages) {
 const avg = calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
 const avg2 = calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]);
 console.log(avg, avg2);
+console.log(`desposites: ${desposites}\nwithdrawals: ${withdrawals}`);
+
