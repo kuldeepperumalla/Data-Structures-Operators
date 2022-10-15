@@ -87,8 +87,16 @@ displayMovement(account1.movements)
 const calcDisplayBalance = function(movemants){
   const balance = movemants.reduce((acc, cur) => 
     acc+cur, 0);
-    labelBalance.textContent = `${balance} EUR`
+    labelBalance.textContent = `${balance} €`;
 }
+
+const calcDisplaySummery = function(movemants){
+  const income = movemants.filter(mov => mov>0).reduce((acc,mov) => acc+mov, 0);
+  labelSumIn.textContent = `${income} &;`;
+}
+
+calcDisplayBalance(account1.movements);
+
 const createUserNames = function (accounts) {
   accounts.forEach(function (value) {
     value.username = value.owner
@@ -152,7 +160,7 @@ console.log(arr.at(0));
 
 console.log(arr[arr.length-1]);
 console.log(arr.slice(-1)[0]);
- */
+*/
 
 /* const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
@@ -216,23 +224,47 @@ const checkDogs = function (dogsJulia, dogsKate) {
 // checkDogs([3, 5, 2, 12, 7], [4, 1, 15, 8, 3]);
 // checkDogs([9, 16, 6, 8, 3], [10, 5, 6, 1, 4]);
 
-//** => */ MAP method
-
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
-
+// The map Method
 const eurToUsd = 1.1;
+ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
-const movementstoUsd = movements.map((value, index,array)=>value*eurToUsd)
+// const movementsUSD = movements.map(function (mov) {
+//   return mov * eurToUsd;
+// });
 
-// console.log(movementstoUsd);
+const movementsUSD = movements.map(mov => mov * eurToUsd);
+
+// console.log(movements);
+// console.log(movementsUSD);
+
+const movementsUSDfor = [];
+for (const mov of movements) movementsUSDfor.push(mov * eurToUsd);
+// console.log(movementsUSDfor);
 
 const movementsDescriptions = movements.map(
-  (mov, i, arr) =>
-  `n Movement ${i+1}: You ${mov > 0 ? 'deposited' : 'Withdrew'} ${mov}`
-)
+  (mov, i) =>
+    `Movement ${i + 1}: You ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(
+      mov
+    )}`
+);
 // console.log(movementsDescriptions);
-console.log(`desposites: ${desposites}\nwithdrawals: ${withdrawals}`);
-// console.log(`desposites: ${desposites}\nwithdrawals: ${withdrawals}`);
+
+///////////////////////////////////////
+// The filter Method
+const deposits = movements.filter(function (mov, i, arr) {
+  return mov > 0;
+});
+// console.log(movements);
+// console.log(deposits);
+
+const depositsFor = [];
+for (const mov of movements) if (mov > 0) depositsFor.push(mov);
+// console.log(depositsFor);
+
+const withdrawals = movements.filter(mov => mov < 0);
+// console.log(withdrawals);
+
+///////////////////////////////////////
 // The reduce Method
 // console.log(movements);
 
@@ -255,6 +287,8 @@ const max = movements.reduce((acc, mov) => {
 }, movements[0]);
 // console.log(max);
 
+
+
 // Coding Challenge #2
 
 /* 
@@ -269,7 +303,7 @@ Create a function 'calcAverageHumanAge', which accepts an arrays of dog's ages (
 
 TEST DATA 1: [5, 2, 4, 1, 15, 8, 3]
 TEST DATA 2: [16, 6, 10, 5, 6, 1, 4]
-
+-
 GOOD LUCK 😀
 */
 
@@ -277,11 +311,23 @@ const calcAverageHumanAge = function (ages) {
   const humanAges = ages.map(Dogage=>Dogage<=2? 2 * Dogage : 16 + Dogage * 4);
   const adults = humanAges.filter((ages) => ages >= 18);
   const average = adults.reduce((acc, cur,index, arr)=>acc+cur/arr.length, 0)
-  console.log(adults);
-  console.log(humanAges);
+  // console.log(adults);
+  // console.log(humanAges);
   return average
 };
 const avg = calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
 const avg2 = calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]);
-console.log(avg, avg2);
-
+// console.log(avg, avg2);
+ 
+// The Magic of Chaining Methods
+// PIPELINE
+console.log(movements);
+const totalDepositsUSD = movements
+  .filter(mov => mov < 0)
+  .map((mov, i, arr) => {
+    console.log(arr,i);
+    return mov * eurToUsd;
+  })
+  // .map(mov => mov * eurToUsd)
+  .reduce((acc, mov) => acc + mov, 0);
+console.log(totalDepositsUSD);
