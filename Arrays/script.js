@@ -61,10 +61,12 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
-const displayMovement = function(movement){
+const displayMovement = function(movement, sort = false){
   containerMovements.innerHTML = '';
 
-  movement.forEach(function (mov, i) {
+  const movs = sort? movements.sort((a,b) => a-b) : movement
+
+  movs.forEach(function (mov, i) {
     const type = mov > 0 ? 'deposit' : 'withdrawal';
 
     const html = 
@@ -150,6 +152,7 @@ btnLogin.addEventListener('click', function (e) {
     labelWelcome.textContent = `Welcome back, ${
       currentAccount.owner.split(' ')[0]
     }`;
+  
     containerApp.style.opacity = 100;
 
     // Clear input fields
@@ -159,8 +162,11 @@ btnLogin.addEventListener('click', function (e) {
     // Update UI
     updateUI(currentAccount);
   }else{
-    alert("user doesnt exist please try again!");
-    inputLoginUsername.value = inputLoginPin.value = "";
+        containerApp.style.opacity = 100;
+
+    document.querySelector("main").textContent =
+      "user doesnt exist please try again!";
+          inputLoginUsername.value = inputLoginPin.value = "";
     inputLoginPin.blur();
   }
 });
@@ -216,6 +222,15 @@ btnClose.addEventListener('click', function(e){
       containerApp.style.opacity = 0;
     }
     inputCloseUsername.value = inputClosePin.value = '';
+});
+
+let sorted = false;
+
+btnSort.addEventListener('click', function(e){
+  e.preventDefault();
+
+  displayMovement(currentAccount.movements, !sorted);
+  sorted = !sorted;
 })
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -514,20 +529,45 @@ console.log(ans); */
 ///////////////////////////////////////
 // flat and flatMap
 const arr = [[1, 2, 3], [4, 5, 6], 7, 8];
-console.log(arr.flat());
+// console.log(arr.flat());
 
 const arrDeep = [[[1, 2], 3], [4, [5, 6]], 7, 8];
-console.log(arrDeep.flat(2));
+// console.log(arrDeep.flat(2));
 
 // flat
 const overalBalance = accounts
   .map(acc => acc.movements)
   .flat()
   .reduce((acc, mov) => acc + mov, 0);
-console.log(overalBalance);
+// console.log(overalBalance);
 
 // flatMap
 const overalBalance2 = accounts
   .flatMap(acc => acc.movements)
   .reduce((acc, mov) => acc + mov, 0);
-console.log(overalBalance2);
+// console.log(overalBalance2);
+
+///////////////////////////////////////
+// Sorting Arrays
+
+// Strings
+const owners = ["Jonas", "Zach", "Adam", "Martha"];
+// console.log(owners);
+// console.log(owners.sort());
+
+// Numbers
+// console.log(movements);
+
+// return < 0, A, B (keep order)
+// return > 0, B, A (switch order)
+
+// Ascending
+const ascending = movements.sort((a, b) =>  a-b);
+// console.log("ascending",movements);
+
+// Decending
+const descending = movements.sort((a, b) => b - a);
+// console.log("descending",movements);
+
+const z = Array.from({length:100}, (_, i) => i = Math.random(1,2));
+// console.log(z);
