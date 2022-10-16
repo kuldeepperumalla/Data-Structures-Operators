@@ -479,9 +479,17 @@ for(const acc of accounts){
 // Some;
 // console.log(movements.some(mov => mov === -130));
 // const anyDeposites = movements.some(any => any >0); console.log(anyDeposites);
-// Every
-// Duplicate eliments in array
-var containsDuplicate = function (nums) {
+// EVERY
+/* console.log(movements.every(mov => mov > 0));
+console.log(account4.movements.every(mov => mov > 0));
+
+// Separate callback
+const deposit = mov => mov > 0;
+console.log(movements.some(deposit));
+console.log(movements.every(deposit));
+console.log(movements.filter(deposit)); */
+
+/* var containsDuplicate = function (nums) {
   nums.sort(compare);
 
   function compare(a,b){
@@ -501,4 +509,25 @@ var containsDuplicate = function (nums) {
 };
 
 const ans =containsDuplicate([1,2,22,33,11,3,5]);
-console.log(ans);
+console.log(ans); */
+
+///////////////////////////////////////
+// flat and flatMap
+const arr = [[1, 2, 3], [4, 5, 6], 7, 8];
+console.log(arr.flat());
+
+const arrDeep = [[[1, 2], 3], [4, [5, 6]], 7, 8];
+console.log(arrDeep.flat(2));
+
+// flat
+const overalBalance = accounts
+  .map(acc => acc.movements)
+  .flat()
+  .reduce((acc, mov) => acc + mov, 0);
+console.log(overalBalance);
+
+// flatMap
+const overalBalance2 = accounts
+  .flatMap(acc => acc.movements)
+  .reduce((acc, mov) => acc + mov, 0);
+console.log(overalBalance2);
