@@ -184,7 +184,24 @@ receiveAcc.movements.push(amount);
 updateUI(currentAccount)
   }
 })
+// Request Loan
+btnLoan.addEventListener("click", function (e) {
+  e.preventDefault();
 
+  const amount = Number(inputLoanAmount.value);
+
+  if (
+    amount > 0 &&
+    currentAccount.movements.some((mov) => mov >= amount * 0.1)
+  ) {
+    // Add movement
+    currentAccount.movements.push(amount);
+
+    // Update UI
+    updateUI(currentAccount);
+  }
+  inputLoanAmount.value = "";
+});
 // Closing the account
 btnClose.addEventListener('click', function(e){
   e.preventDefault();
@@ -456,3 +473,32 @@ const account = accounts.find(acc => acc.owner === 'Jessica Davis');
 for(const acc of accounts){
   // acc.owner === "Jessica Davis" ? console.log(acc) : console.log();;
 }
+
+// equality
+// console.log(movements.includes(-130))
+// Some;
+// console.log(movements.some(mov => mov === -130));
+// const anyDeposites = movements.some(any => any >0); console.log(anyDeposites);
+// Every
+// Duplicate eliments in array
+var containsDuplicate = function (nums) {
+  nums.sort(compare);
+
+  function compare(a,b){
+    return a-b;
+  }
+  console.log(nums);
+
+  let counter = 0;
+  for (let e = 1; e < nums.length; e++) {
+    if (nums[e] == nums[e - 1]) {
+      counter++;
+    }
+
+  }
+
+  return counter != 0;
+};
+
+const ans =containsDuplicate([1,2,22,33,11,3,5]);
+console.log(ans);
