@@ -12,11 +12,16 @@
 // }
 
 // ES6
-/* const Person = function(firstName, birthYear){
+const Person = function(firstName, birthYear){
     this.fName = firstName;
     this.bYear  = birthYear;
 }
- */
+
+// Person.prototype.calcAge = function(){
+//   const today = new Date();
+//    console.log(today.getFullYear()-this.birthYear);
+// }
+
 /* // calling the constructor using the "new operator"
 const account1 = new Person('kuldeep', 1997);
 const account2 = new Person("kuldeep2", 1995);
@@ -30,9 +35,7 @@ console.log(account1,account2,account3, Person);
 // 4. funciton automatically return {}
 console.log(Person.prototype);
 // Prototype
-Person.prototype.calcAge = function(){
-   console.log(2037-this.birthYear);
-}
+
 
 account1.calcAge();
 account2.calcAge();
@@ -180,3 +183,72 @@ console.log(account.movements);
  */
 
 // Object.create()
+const PersonProto = {
+    calcAge2() {
+    console.log(new Date().getFullYear() - this.birthYear);
+  },
+
+  init(firstName, birthyear){
+    this.firstname = firstName;
+    this.birthyear = birthyear;
+    console.log(firstName, birthyear);
+  }
+};
+
+const steven = Object.create(PersonProto);
+steven.d="steven kuldeep";
+steven.birthYear=1997
+console.log(steven);
+
+steven.calcAge2();
+const jude = Object.create(PersonProto);
+jude.init("jude kuldeep", 1997);
+
+///////////////////////////////////////
+// Coding Challenge #2
+
+/* 
+1. Re-create challenge 1, but this time using an ES6 class;
+2. Add a getter called 'speedUS' which returns the current speed in mi/h (divide by 1.6);
+3. Add a setter called 'speedUS' which sets the current speed in mi/h (but converts it to km/h before storing the value, by multiplying the input by 1.6);
+4. Create a new car and experiment with the accelerate and brake methods, and with the getter and setter.
+DATA CAR 1: 'Ford' going at 120 km/h
+GOOD LUCK 😀
+
+*/
+// const Car = function (make, speed) {
+//   this.make = make;
+//   this.speed = speed;
+// };
+
+class Car {
+  constructor(make, speed) {
+    this.make = make;
+    this.speed = speed;
+  }
+
+accelerate() {
+  this.speed += 10;
+  console.log(`${this.make} is going at ${this.speed} km/h`);
+};
+brake() {
+  this.speed -= 5;
+  console.log(`${this.make} is going at ${this.speed} km/h`);
+};
+
+  get speedUS(){
+    return this.speed/1.6
+  }
+
+  set speedUS(speed){
+    this.speed = speed * 1.6;
+  }
+}
+
+const ford = new Car('ford', 100);
+console.log(ford.speedUS);
+ford.accelerate();
+ford.accelerate();
+ford.brake();
+ford.speedUS = 50;
+console.log(ford);
