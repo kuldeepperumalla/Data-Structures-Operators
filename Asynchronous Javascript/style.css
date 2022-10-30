@@ -64,7 +64,10 @@ body {
     }
 }
 
-
+.wrap{
+    display: flex;
+    justify-content: center;
+}
 
 .neighbour::before {
     content: 'Neighbour country';
